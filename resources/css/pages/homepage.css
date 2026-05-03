@@ -1,0 +1,60 @@
+.OkrsPage {
+    .header {
+        .navbar {
+            @apply flex items-center justify-between;
+
+            .year-selector {
+                @apply flex items-center gap-2;
+
+                button,
+                a.btn {
+                    @apply w-8 h-8 border border-border rounded-lg flex items-center justify-center;
+                }
+
+                .year-btn {
+                    @apply text-base font-bold transition-all duration-150 hover:text-muted-foreground;
+                }
+
+                span {
+                    @apply text-xl font-semibold text-center;
+                }
+
+                .actions {
+                    @apply flex gap-2;
+
+                    a {
+                        @apply font-medium hover:border-foreground transition-all duration-100 text-base;
+
+                        .icon {
+                            @apply w-4 h-4;
+                        }
+                    }
+                }
+            }
+
+            .filters {
+                @apply flex gap-4;
+
+                .label {
+                    @apply text-muted-foreground;
+                }
+
+                .quarter-pills {
+                    @apply flex gap-4;
+
+                    span {
+                        @apply py-1 px-3 rounded-full text-[12px] font-medium cursor-pointer border-[.15px] border-border bg-foreground text-background transition-all duration-150;
+
+                        &:hover:not(.active) {
+                            @apply border-accent text-accent;
+                        }
+
+                        &.active {
+                            @apply border-accent bg-accent/10 text-accent;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
