@@ -48,4 +48,17 @@ trait ProfileValidationRules
                 : Rule::unique(User::class)->ignore($userId),
         ];
     }
+
+    protected function usernameRules(?int $userId = null): array
+    {
+        return [
+            'required', 
+            'string', 
+            'max:255', 
+            'alpha_dash', 
+            $userId === null
+                ? Rule::unique(User::class)
+                : Rule::unique(User::class)->ignore($userId),
+        ];
+    }
 }
