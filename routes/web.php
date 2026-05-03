@@ -5,6 +5,7 @@ use Laravel\Fortify\Features;
 use App\Http\Controllers\Guest\GuestController;
 use App\Http\Controllers\OKRsController;
 use App\Http\Controllers\Okrs\YearController;
+use App\Http\Controllers\Okrs\QuarterController;
 
 Route::get('/', [GuestController::class, 'homePage'])->name('home');
 
@@ -19,6 +20,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('years/{year:year}/edit', [YearController::class, 'edit'])->name('years.edit');
     Route::put('years/{year:year}', [YearController::class, 'update'])->name('years.update');
     Route::delete('years/{year:year}', [YearController::class, 'destroy'])->name('years.destroy');
+
+    Route::post('years/{year:year}/quarters', [QuarterController::class, 'store'])->name('quarters.store');
+    Route::post('years/{year:year}/quarters/bulk', [QuarterController::class, 'storeBulk'])->name('quarters.store.bulk');
+    Route::put('years/{year:year}/quarters/{quarter}', [QuarterController::class, 'update'])->name('quarters.update');
+    Route::delete('years/{year:year}/quarters/{quarter}', [QuarterController::class, 'destroy'])->name('quarters.destroy');
 });
 
 Route::inertia('/welcome', 'Welcome', [

@@ -38,6 +38,8 @@ class YearController extends Controller
 
     public function edit(Year $year)
     {
+        $year->load('quarters');
+        
         return inertia('app/okrs/years/Edit', [
             'year' => $year
         ]);
